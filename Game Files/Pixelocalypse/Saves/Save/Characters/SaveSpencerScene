@@ -1,0 +1,7 @@
+Spencer src/res/scenes/ForestScene.png
+Sprite Character 0 0 src/res/scenes/characterRight.png
+Sprite Loot 640 128 src/res/scenes/loot.png
+Sprite Loot 512 128 src/res/scenes/loot.png
+Sprite Loot 384 512 src/res/scenes/loot.png
+Sprite Loot 256 0 src/res/scenes/loot.png
+Sprite Loot 640 0 src/res/scenes/loot.png

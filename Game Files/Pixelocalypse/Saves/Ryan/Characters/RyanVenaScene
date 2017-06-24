@@ -1,0 +1,5 @@
+Vena src/res/scenes/City-IndustrialScene.png
+Sprite Character 384 128 src/res/scenes/characterRight.png
+Sprite Loot 896 256 src/res/scenes/loot2.png
+Sprite Loot 768 512 src/res/scenes/loot3.png
+Sprite Loot 896 0 src/res/scenes/loot1.png

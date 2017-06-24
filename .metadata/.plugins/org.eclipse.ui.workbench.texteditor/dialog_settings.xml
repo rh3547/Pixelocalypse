@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="257" key="DIALOG_WIDTH"/>
+		<item value="265" key="DIALOG_Y_ORIGIN"/>
+		<item value="381" key="DIALOG_HEIGHT"/>
+		<item value="1355" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="" key="selection"/>
+		<list key="findhistory">
+			<item value="tool"/>
+			<item value="800"/>
+			<item value="780"/>
+			<item value=" + ((15) * (game.getCurrentPlayer().getName().length()))"/>
+			<item value="(780 + ((15) * (game.getCurrentPlayer().getName().length())))"/>
+			<item value="if (xp &gt;= 0 &amp;&amp; xp &lt; 100)"/>
+			<item value="830"/>
+			<item value="1090"/>
+		</list>
+		<list key="replacehistory">
+			<item value="830"/>
+			<item value=""/>
+			<item value="(780)"/>
+			<item value="780"/>
+			<item value="1140"/>
+			<item value="980"/>
+			<item value="1150"/>
+			<item value="15"/>
+		</list>
+	</section>
+</section>

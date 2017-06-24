@@ -1,0 +1,207 @@
+package com.thale.locations;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import javax.swing.ImageIcon;
+
+public class LocationManager 
+{
+	List<Location> locations = new ArrayList<Location>();
+	
+	private File locationsDir;
+	private File locationsFile;
+	private File lootDir;
+	
+	Path dir = FileSystems.getDefault().getPath("C:\\Pixelocalypse\\Locations");
+	DirectoryStream<Path> stream;
+	private File[] fileArray;
+	
+	public void createLocationDirectories()
+	{
+		locationsDir = new File("C:\\Pixelocalypse\\Locations");
+		
+		// Creates the directory if it doesn't exist
+		if (locationsDir.exists() == false)
+		{
+			locationsDir.mkdirs();
+		}
+		else if (locationsDir.exists() == true)
+		{
+			System.err.format("\nDirectory " + locationsDir + " already exists");
+		}
+		
+		lootDir = new File("C:\\Pixelocalypse\\Loot");
+		
+		// Creates the directory if it doesn't exist
+		if (lootDir.exists() == false)
+		{
+			lootDir.mkdirs();
+		}
+		else if (lootDir.exists() == true)
+		{
+			System.err.format("\nDirectory " + lootDir + " already exists");
+		}
+		
+		loadLocations();
+	}
+	
+	public void loadLocations()
+	{	
+		String name = "";
+		double rarity = 0;
+		String[] loot = new String[50];
+		double[] lootChance = new double[50];
+		ImageIcon icon;
+		double danger = 0;
+		double level = 0;
+		
+		String lootFilePath = "";
+		File lootFile;
+		String iconPath = "";
+		int arrayCount = 0;
+		int locationIndex = -1;
+		/*
+		try 
+		{
+			stream = Files.newDirectoryStream(dir);
+		} 
+		catch (IOException e1) 
+		{
+			e1.printStackTrace();
+		}
+		
+		for (Path path : stream) 
+		{
+		*/
+		   fileArray = locationsDir.listFiles();
+		   for (int x = 0; x < fileArray.length; x++)
+		   {
+			   System.out.println("\n\nNew Location File:");
+		   
+		   locationIndex++;
+		   System.out.print("\n" + locationIndex);
+		   
+		   //System.out.println(path.getFileName());
+		   
+		   locationsFile = new File(fileArray[x].toString());	//path.getFileName().toString()
+		   System.out.print("\n" + locationsFile);
+		   
+		   for (int count = 0; count < locationsDir.listFiles().length; count++)
+			{
+				   FileReader reader;
+			       BufferedReader inFile;
+
+			       try
+			       {
+			          // Open the file
+			          reader = new FileReader(locationsFile);
+			          inFile = new BufferedReader(reader);
+			          
+			          String line = inFile.readLine();
+						
+			          /**
+			          * Loop continues to read the file
+			          * until it detects that there
+			          * is no more in the file to read.
+			          */
+			          while(line != null)
+			          {	
+			             //StringTokenizer reads lines from file
+			          	 StringTokenizer token = new StringTokenizer(line);
+						
+			          	 name = token.nextToken();
+			          	 rarity = Double.parseDouble(token.nextToken());
+			          	 lootFilePath = token.nextToken();
+			          	 iconPath = token.nextToken();
+			          	 danger = Double.parseDouble(token.nextToken());
+			          	 level = Double.parseDouble(token.nextToken());
+								          
+			             line = inFile.readLine();
+			          }
+			          inFile.close();          
+			       }
+			       catch (IOException e)
+			       {
+			    	   
+			       }
+			       
+			       System.out.print("\nLocation Name: " + name);
+			       
+			       lootFile = new File("C:\\Pixelocalypse\\Loot\\" + lootFilePath);
+			       icon = new ImageIcon("src/res/locations/" + iconPath);
+			       
+			       FileReader reader2;
+			       BufferedReader inFile2;
+
+			       try
+			       {
+			          // Open the file
+			          reader2 = new FileReader(lootFile);
+			          inFile2 = new BufferedReader(reader2);
+			          
+			          String line2 = inFile2.readLine();
+						
+			          /**
+			          * Loop continues to read the file
+			          * until it detects that there
+			          * is no more in the file to read.
+			          */
+			          while(line2 != null)
+			          {	
+			             //StringTokenizer reads lines from file
+			          	 StringTokenizer token2 = new StringTokenizer(line2);
+			          	
+						 loot[arrayCount] = token2.nextToken();
+						 lootChance[arrayCount] = Double.parseDouble(token2.nextToken());
+						 
+						 arrayCount++;
+			          	 
+			             line2 = inFile2.readLine();
+			          }
+			          inFile2.close();          
+			       }
+			       catch (IOException e)
+			       {
+			    	   
+			       }
+			       arrayCount = 0;
+			       System.out.print("\nLoot File Test: " + loot[0] + " " + lootChance[0]);
+			       
+			       locations.add(new Location(name, rarity, loot, lootChance, icon, danger, level));
+			}
+		   }// End for loop
+		   /*
+		try 
+		{
+			stream.close();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		*/
+		// Array print test
+		System.out.print("\n\nArray Test:");
+		for (int x = 0; x < locations.size(); x++)
+		{
+			System.out.print("\n" + locations.get(x).getName());
+		}
+		
+	}
+	
+	public void saveLocationFiles()
+	{
+		
+	}
+}
